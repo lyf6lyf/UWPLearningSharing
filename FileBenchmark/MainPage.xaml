@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="FileBenchmark.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:FileBenchmark"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Click="GetMetadataWithNewTask">Get metadata with new task</Button>
+        <Button Grid.Row="1" Click="GetMetadataWithoutNewTask">Get metadata without new task</Button>
+        <Button Grid.Row="2" Click="GetMetadataWithNewTaskAsync">Await Get metadata with new task</Button>
+        <Button Grid.Row="3" Click="GetMetadataWithoutNewTaskAsync">Await Get metadata without new task</Button>
+        <TextBlock Grid.Column="1" Text="{x:Bind ResultWithNewTask.Value, Mode=TwoWay}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="{x:Bind ResultWithoutNewTask.Value, Mode=TwoWay}" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Text="{x:Bind AwaitResultWithNewTask.Value, Mode=TwoWay}" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Text="{x:Bind AwaitResultWithoutNewTask.Value, Mode=TwoWay}" />
+
+        <TextBox Grid.Row="4" Text="{x:Bind VM.MyName.Value, Mode=TwoWay}" />
+    </Grid>
+</Page>

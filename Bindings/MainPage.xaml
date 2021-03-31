@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="Bindings.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Bindings"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border BorderBrush="Black" BorderThickness="4">
+            <Frame
+                x:Name="content"
+                Width="400"
+                Height="400" />
+        </Border>
+
+        <StackPanel Margin="10" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10,10,0,0" />
+                </Style>
+            </StackPanel.Resources>
+            <Button Click="Back" IsEnabled="{x:Bind content.CanGoBack, Mode=OneWay}">Back</Button>
+            <Button Click="Forward" IsEnabled="{x:Bind content.CanGoForward, Mode=OneWay}">Forward</Button>
+            <Button Click="NavigateToPage1">NavToPage1</Button>
+            <Button Click="NavigateToPage2">NavToPage2</Button>
+            <Button Click="GC">GC</Button>
+        </StackPanel>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="10,10,0,0" />
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Page1 Count: " />
+                <TextBlock Text="{x:Bind CountPage1.Value, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="VM1 Count: " />
+                <TextBlock Text="{x:Bind CountVM1.Value, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ClassA Count: " />
+                <TextBlock Text="{x:Bind CountClassA.Value, Mode=OneWay}" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>
